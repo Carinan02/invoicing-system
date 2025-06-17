@@ -11,7 +11,9 @@ Route::get('/greeting',[GreetingController::class,'index']);
 Route::get('/home', function () {
     return view('home');
 });
-
+Route::get('/nico', function () {
+    return '<h2>Hello Nico pogi</h2>';
+});
 Route::get('/about', function () {
     return view('about');
 });

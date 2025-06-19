@@ -12,7 +12,7 @@ Route::get('/home', function () {
     return view('home');
 });
 Route::get('/nico', function () {
-    return '<h2>Another test modified git safe</h2>';
+    return '<h2>sana gumana na</h2>';
 });
 Route::get('/about', function () {
     return view('about');

@@ -12,7 +12,7 @@ Route::get('/home', function () {
     return view('home');
 });
 Route::get('/nico', function () {
-    return '<h2>Did it work?</h2>';
+    return '<h2>It worked!</h2>';
 });
 Route::get('/about', function () {
     return view('about');

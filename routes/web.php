@@ -12,7 +12,7 @@ Route::get('/home', function () {
     return view('home');
 });
 Route::get('/nico', function () {
-    return '<h2>dapat test test lalabas kay production to verify na late sya ng isang pull</h2>';
+    return '<h2>parang mali</h2>';
 });
 Route::get('/about', function () {
     return view('about');

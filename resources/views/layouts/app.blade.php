@@ -1,36 +1,53 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="en">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoicing System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+<body class="bg-gray-100 font-sans">
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-md">
+            <div class="p-4 text-xl font-bold border-b">Invoicing</div>
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li><a href="{{ url('/dashboard') }}"
+                            class="block px-3 py-2 rounded hover:bg-gray-200">Dashboard</a></li>
+                    <li><a href="{{ url('/rooms') }}" class="block px-3 py-2 rounded hover:bg-gray-200">Rooms</a>
+                    </li>
+                    <li><a href="{{ url('/clients') }}" class="block px-3 py-2 rounded hover:bg-gray-200">Clients</a>
+                    </li>
+                    <li><a href="{{ url('/invoices') }}" class="block px-3 py-2 rounded hover:bg-gray-200">Invoices</a>
+                    </li>
+                    <li><a href="{{ url('/payments') }}" class="block px-3 py-2 rounded hover:bg-gray-200">Payments</a>
+                    </li>
+                    <li><a href="{{ url('/reports') }}" class="block px-3 py-2 rounded hover:bg-gray-200">Reports</a>
+                    </li>
+                    <li><a href="{{ url('/settings') }}" class="block px-3 py-2 rounded hover:bg-gray-200">Settings</a>
+                    </li>
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="w-full text-left px-3 py-2 rounded hover:bg-gray-200">
+                                Log Out
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+        <!-- Main Content -->
+        <div class="flex-1 p-6">
+            @yield('content')
         </div>
-    </body>
+    </div>
+
+</body>
+
 </html>

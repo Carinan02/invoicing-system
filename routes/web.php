@@ -3,6 +3,8 @@
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GreetingController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class,'index']);
@@ -19,7 +21,7 @@ Route::get('/about', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+   return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -29,3 +31,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::resource('clients', ClientController::class)->middleware('auth');
+
+Route::resource('rooms', RoomController::class)->middleware('auth');
